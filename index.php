@@ -13,10 +13,17 @@ require 'libraries/connection.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-4">
         <h1 class="text-center">Data Kamar</h1>
-        <div class="mb-4 float-end">
-            <a href="tambah_kamar.php" class="btn btn-success">Tambah Data Kamar</a>
+        <div class="d-flex mb-4">
+            <?php
+            $koneksi = connect();
+            $total = $koneksi->query('SELECT * FROM kamar')->fetchAll();
+            ?>
+            <span class="fs-5 fw-bold">Jumlah Kamar: <?php echo count($total); ?></span>
+            <div class="ms-auto">
+                <a href="tambah_kamar.php" class="btn btn-success"><i class="bi bi-plus-lg"></i> Create</a>
+            </div>
         </div>
         <table class="table table-hover table-bordered">
             <tr>
@@ -38,8 +45,8 @@ require 'libraries/connection.php';
                     <td><?php echo $data->fasilitas_kamar; ?></td>
                     <td><?php echo $data->jumlah_kamar; ?></td>
                     <td>
-                        <a href="edit_kamar.php?id=<?php echo $data->id_kamar; ?>" class="btn btn-primary">Edit</a>
-                        <a onclick="return confirm('Anda yakin akan menghapus data ini?')" href="proses_hapus_kamar.php?id=<?php echo $data->id_kamar; ?>" class="btn btn-danger">Delete</a>
+                        <a href="edit_kamar.php?id=<?php echo $data->id_kamar; ?>" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+                        <a onclick="return confirm('Anda yakin akan menghapus data ini?')" href="proses_hapus_kamar.php?id=<?php echo $data->id_kamar; ?>" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

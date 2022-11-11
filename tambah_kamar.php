@@ -29,7 +29,7 @@ require 'libraries/connection.php';
             <input type="numbere" class="form-control" name="jumlah_kamar" id="jumlah_kamar" placeholder="Masukkan jumlah kamar...">
         </div>
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary" type="button">Tambah</button>
+            <button type="submit" class="btn btn-primary" type="button">Create</button>
         </div>
     </form>
 </div>
