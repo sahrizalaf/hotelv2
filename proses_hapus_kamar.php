@@ -1,6 +1,6 @@
 <?php
 require 'libraries/connection.php';
-$id = $_GET['id'];
+$id = htmlspecialchars($_GET['id']);
 
 try {
     $koneksi = connect();

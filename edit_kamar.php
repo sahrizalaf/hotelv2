@@ -18,7 +18,7 @@ require 'libraries/connection.php';
     <?php
     require_once 'libraries/connection.php';
     $koneksi = connect();
-    $id = $_GET['id'];
+    $id = htmlspecialchars($_GET['id']);
     $query = $koneksi->prepare('SELECT * FROM kamar WHERE id_kamar = :id_kamar');
     $query->bindParam(':id_kamar', $id);
     $query->execute();
